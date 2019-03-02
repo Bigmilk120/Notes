@@ -5,6 +5,9 @@
     <option name="width" value="666" />
     <option name="height" value="775" />
   </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
   <component name="masterDetails">
     <states>
       <state key="ProjectJDKs.UI">
