@@ -2,10 +2,7 @@ package com.example.Notes;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class WebController {
@@ -22,8 +19,14 @@ public class WebController {
         return "Login";
     }
 
-    @PostMapping("/")
-    public String Login(@ModelAttribute Login login) {
+    @PostMapping("/Login")
+    public String LoginSubmit(@ModelAttribute Login login) {
+        return "result";
+    }
+
+
+    @RequestMapping("/Result")
+    public String Result(@RequestParam(name="username", required=false, defaultValue="Just") String username,@RequestParam(name="password", required=false, defaultValue="Just") String password){
         return "result";
     }
 }

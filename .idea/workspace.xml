@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fea23f0b-8dec-4ae6-82f2-3d0677355fb2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Notes/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/Result.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Notes/WebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Notes/WebController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Result.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Result.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -47,11 +44,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/Notes/WebController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+            <state relative-caret-position="220">
+              <caret line="22" column="60" lean-forward="true" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#920#921#0" expanded="true" />
                 <element signature="e#951#952#0" expanded="true" />
               </folding>
             </state>
@@ -70,8 +66,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/Result.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            <state relative-caret-position="153">
+              <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -136,9 +132,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/result.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/Notes/Login.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/Result.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/Login.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/Notes/WebController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/Result.html" />
       </list>
     </option>
   </component>
@@ -217,7 +213,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551547701254" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551548621463" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -327,7 +323,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551542456722</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary=".">
+      <created>1551547723519</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1551547723519</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -382,7 +385,8 @@
     <MESSAGE value="Imported project with Spring Initializer." />
     <MESSAGE value="Made web page connection." />
     <MESSAGE value="Index page with minor changes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Index page with minor changes." />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
@@ -467,11 +471,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/Notes/WebController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="23" lean-forward="true" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+        <state relative-caret-position="220">
+          <caret line="22" column="60" lean-forward="true" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#920#921#0" expanded="true" />
             <element signature="e#951#952#0" expanded="true" />
           </folding>
         </state>
@@ -479,8 +482,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/Result.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        <state relative-caret-position="153">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
         </state>
       </provider>
     </entry>
