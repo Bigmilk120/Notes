@@ -28,9 +28,8 @@ public class WebController {
         return "result";
     }
 
-
     @RequestMapping("/Result")
-    public String Result(@Valid @ModelAttribute("employee")Login login, BindingResult result, ModelMap model){
+    public String Result(@Valid @ModelAttribute("note")Login login, BindingResult result, ModelMap model){
         model.addAttribute("username",login.getUsername());
         model.addAttribute("password",login.getPassword());
 
