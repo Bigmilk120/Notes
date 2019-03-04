@@ -3,6 +3,7 @@ package com.example.Notes;
 import com.example.Notes.Notes;
 import com.example.Notes.NotesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.sql.Date;
 
 @Controller
-@RequestMapping(path="/demo")
+@RequestMapping(path="/res")
 public class DBController {
     @Autowired
     private NotesRepository notesRepository;
