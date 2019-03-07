@@ -16,7 +16,7 @@ import java.sql.Date;
 @Controller
 @RequestMapping(path="/res")
 public class DBController {
-   // @Autowired
+    @Autowired
     private NotesRepository notesRepository;
 
     @GetMapping(path="/add")
