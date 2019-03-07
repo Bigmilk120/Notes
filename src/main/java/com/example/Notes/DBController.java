@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.sql.Date;
 
 @Controller
-@RequestMapping(path="/res")
+@RequestMapping(path="/")
 public class DBController {
     @Autowired
     private NotesRepository notesRepository;

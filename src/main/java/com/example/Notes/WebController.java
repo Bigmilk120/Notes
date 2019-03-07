@@ -11,12 +11,6 @@ import javax.validation.Valid;
 @Controller
 public class WebController {
 
-    @GetMapping("/webController")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="Just") String name, Model model) {
-        model.addAttribute("name", name);
-        return "webController";
-    }
-
     @GetMapping("/")
     public String Login(Model model) {
         model.addAttribute("Login", new Login());
@@ -25,7 +19,7 @@ public class WebController {
 
     @PostMapping("/Login")
     public String LoginSubmit(@ModelAttribute Login login) {
-        return "result";
+        return "Result";
     }
 
     @RequestMapping("/Result")
