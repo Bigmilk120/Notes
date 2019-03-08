@@ -14,6 +14,7 @@ public class WebController {
     @GetMapping("/")
     public String Login(Model model) {
         model.addAttribute("Login", new Login());
+        model.addAttribute("InsertNote", new InsertNote());
         return "Login";
     }
 
@@ -28,5 +29,22 @@ public class WebController {
         model.addAttribute("password",login.getPassword());
 
         return "Result";
+    }
+
+
+    @RequestMapping(value = "/InsertNote", method = RequestMethod.GET)
+    public String InsertNote(@ModelAttribute("InsertNote")InsertNote note){
+        return "InsertNote";
+    }
+    @PostMapping("/InsertNote")
+    public String ResInsert(){
+        return "ShowNotes";
+    }
+    @RequestMapping("/ShowNotes")
+    public String ShowNotes(@Valid @ModelAttribute("InsertNote")InsertNote note, BindingResult result, ModelMap model){
+        model.addAttribute("date",note.getDate());
+        model.addAttribute("note_text",note.getNote_text());
+
+        return "ShowNotes";
     }
 }
