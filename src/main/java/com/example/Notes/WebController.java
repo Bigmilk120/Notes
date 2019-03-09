@@ -1,5 +1,6 @@
 package com.example.Notes;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -7,14 +8,17 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.Date;
 
 @Controller
 public class WebController {
+    @Autowired
+    private NotesRepository notesRepository;
 
     @GetMapping("/")
     public String Login(Model model) {
         model.addAttribute("Login", new Login());
-        model.addAttribute("InsertNote", new InsertNote());
+       // model.addAttribute("InsertNote", new InsertNote());
         return "Login";
     }
 
@@ -31,19 +35,21 @@ public class WebController {
         return "Result";
     }
 
-
-    @RequestMapping(value = "/InsertNote", method = RequestMethod.GET)
-    public String InsertNote(@ModelAttribute("InsertNote")InsertNote note){
+    @GetMapping("/InsertNote")
+    public String InsertNote(Model model) {
+        model.addAttribute("Notes", new Notes());
         return "InsertNote";
     }
+
     @PostMapping("/InsertNote")
-    public String ResInsert(){
+    public String InsertNoteSubmit(@ModelAttribute Notes note){
         return "ShowNotes";
     }
     @RequestMapping("/ShowNotes")
-    public String ShowNotes(@Valid @ModelAttribute("InsertNote")InsertNote note, BindingResult result, ModelMap model){
+    public String ShowNotes(@Valid @ModelAttribute("Notes")Notes note, BindingResult result, ModelMap model){
         model.addAttribute("date",note.getDate());
         model.addAttribute("note_text",note.getNote_text());
+        System.out.println("wywołane!");
 
         return "ShowNotes";
     }
