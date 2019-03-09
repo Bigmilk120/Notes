@@ -27,6 +27,15 @@ public class DBController {
         notesRepository.save(note);
         return "Saved";
     }
+    @GetMapping(path="/ShowNotes")
+    public @ResponseBody String addNewNoteToDatabase(@RequestParam Date date, @RequestParam String note_text){
+        Notes note = new Notes();
+        note.setDate(date);
+        note.setNote_text(note_text);
+        notesRepository.save(note);
+        System.out.println("xD");
+        return "Saved";
+    }
 
     @GetMapping(path="/all")
     public @ResponseBody Iterable<Notes> getAllNotes(){

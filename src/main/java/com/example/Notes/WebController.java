@@ -49,8 +49,8 @@ public class WebController {
     public String ShowNotes(@Valid @ModelAttribute("Notes")Notes note, BindingResult result, ModelMap model){
         model.addAttribute("date",note.getDate());
         model.addAttribute("note_text",note.getNote_text());
+        notesRepository.save(note);
         System.out.println("wywołane!");
-
         return "ShowNotes";
     }
 }
