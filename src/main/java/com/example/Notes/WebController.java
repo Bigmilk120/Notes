@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.sql.Date;
+import java.util.List;
 
 @Controller
 public class WebController {
@@ -49,8 +50,18 @@ public class WebController {
     public String ShowNotes(@Valid @ModelAttribute("Notes")Notes note, BindingResult result, ModelMap model){
         model.addAttribute("date",note.getDate());
         model.addAttribute("note_text",note.getNote_text());
+
         notesRepository.save(note);
-        System.out.println("wywołane!");
+        List<Notes> notes = notesRepository.showAllNotes();
+        for(Notes n : notes) {
+            System.out.println(n.getId());
+        }
+
         return "ShowNotes";
+    }
+    @GetMapping("/ShowAll")
+    public String showAll(Model model) {
+        model.addAttribute("Notes", notesRepository.findAll());
+        return "/ShowAll";
     }
 }
