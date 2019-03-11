@@ -24,21 +24,16 @@ public class WebController {
         return "Login";
     }
 
-    @PostMapping("/Login")
-    public String LoginSubmit(@ModelAttribute Login login) {
-        return "Result";
-    }
-
     @RequestMapping("/Result")
-    public String Result(@Valid @ModelAttribute("login")Login login, BindingResult result, ModelMap model){
+    public String Result(@Valid @ModelAttribute("Login")Login login, BindingResult result, ModelMap model){
+        model.addAttribute("Login", new Login());
         model.addAttribute("username",login.getUsername());
         model.addAttribute("password",login.getPassword());
-        List<Login> users = loginRepository.showAllUsers();
-        loginRepository.save(login);
-        for(Login l : users) {
-            System.out.println(l.getId());
+        List<Login> logins = loginRepository.isCorrect(login.getUsername(),login.getPassword());
+        if(logins.size()==1){
+            return "Result";
         }
-        return "Result";
+        return "/";
     }
 
     @GetMapping("/InsertNote")

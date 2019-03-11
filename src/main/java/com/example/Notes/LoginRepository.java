@@ -13,4 +13,7 @@ import java.util.List;
 public interface LoginRepository extends CrudRepository<Login, Integer> {
     @Query("select n from Login n")
     List<Login> showAllUsers();
+
+    @Query("select n from Login n where username like ?1 and password like ?2")
+    List<Login> isCorrect(String username, String password);
 }
