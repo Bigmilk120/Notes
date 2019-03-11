@@ -15,11 +15,12 @@ import java.util.List;
 public class WebController {
     @Autowired
     private NotesRepository notesRepository;
+    @Autowired
+    private LoginRepository loginRepository;
 
     @GetMapping("/")
     public String Login(Model model) {
         model.addAttribute("Login", new Login());
-       // model.addAttribute("InsertNote", new InsertNote());
         return "Login";
     }
 
@@ -29,10 +30,14 @@ public class WebController {
     }
 
     @RequestMapping("/Result")
-    public String Result(@Valid @ModelAttribute("note")Login login, BindingResult result, ModelMap model){
+    public String Result(@Valid @ModelAttribute("login")Login login, BindingResult result, ModelMap model){
         model.addAttribute("username",login.getUsername());
         model.addAttribute("password",login.getPassword());
-
+        List<Login> users = loginRepository.showAllUsers();
+        loginRepository.save(login);
+        for(Login l : users) {
+            System.out.println(l.getId());
+        }
         return "Result";
     }
 
