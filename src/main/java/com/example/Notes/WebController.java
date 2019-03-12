@@ -33,7 +33,7 @@ public class WebController {
         if(logins.size()==1){
             return "Result";
         }
-        return "/";
+        return "/Login";
     }
 
     @GetMapping("/InsertNote")
@@ -46,6 +46,7 @@ public class WebController {
     public String InsertNoteSubmit(@ModelAttribute Notes note){
         return "ShowNotes";
     }
+
     @RequestMapping("/ShowNotes")
     public String ShowNotes(@Valid @ModelAttribute("Notes")Notes note, BindingResult result, ModelMap model){
         model.addAttribute("date",note.getDate());
