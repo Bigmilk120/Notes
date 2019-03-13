@@ -1,13 +1,31 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>After Logging</title>
+    <title>Notes</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<body>
-<h1>Result</h1>
-<p th:text="'Login: ' + ${username}" />
-<p th:text="'Password: ' + ${password}" />
-<a href="/">Submit another message</a>
+<a>
+<h1>Notes</h1>
+<table>
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th> Date </th>
+        <th> Text </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${Notes.empty}">
+        <td colspan="2"> No Notes Available </td>
+    </tr>
+    <tr th:each="note : ${Notes}">
+        <td><span th:text="${note.id}"> ID </span></td>
+        <td><span th:text="${note.date}"> Date </span></td>
+        <td><span th:text="${note.note_text}"> Text </span></td>
+    </tr>
+    </tbody>
+</table>
+<a href="/InsertNote">Click here to add a note</a></body>
+</body>
 </body>
 </html>

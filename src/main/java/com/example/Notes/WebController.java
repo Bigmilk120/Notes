@@ -29,6 +29,7 @@ public class WebController {
         model.addAttribute("Login", new Login());
         model.addAttribute("username",login.getUsername());
         model.addAttribute("password",login.getPassword());
+        model.addAttribute("Notes", notesRepository.findAll());
         List<Login> logins = loginRepository.isCorrect(login.getUsername(),login.getPassword());
         if(logins.size()==1){
             return "Result";
