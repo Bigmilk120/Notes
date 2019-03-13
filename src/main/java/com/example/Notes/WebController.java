@@ -32,7 +32,7 @@ public class WebController {
         model.addAttribute("Notes", notesRepository.findAll());
         List<Login> logins = loginRepository.isCorrect(login.getUsername(),login.getPassword());
         if(logins.size()==1){
-            return "Result";
+            return "ShowAll";
         }
         return "/Index";
     }
@@ -55,9 +55,6 @@ public class WebController {
 
         notesRepository.save(note);
         List<Notes> notes = notesRepository.showAllNotes();
-        for(Notes n : notes) {
-            System.out.println(n.getId());
-        }
 
         return "ShowNotes";
     }
