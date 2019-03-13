@@ -33,7 +33,7 @@ public class WebController {
         if(logins.size()==1){
             return "Result";
         }
-        return "/Login";
+        return "/Index";
     }
 
     @GetMapping("/InsertNote")
