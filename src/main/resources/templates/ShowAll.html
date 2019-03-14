@@ -11,16 +11,18 @@
         <th> ID </th>
         <th> Date </th>
         <th> Text </th>
+        <th> Owner </th>
     </tr>
     </thead>
     <tbody>
-    <tr th:if="${Notes.empty}">
+    <tr th:if="${NotesUser.empty}">
         <td colspan="2"> No Notes Available </td>
     </tr>
-    <tr th:each="note : ${Notes}">
+    <tr th:each="note : ${NotesUser}" th:object="${Notes}">
         <td><span th:text="${note.id}"> ID </span></td>
         <td><span th:text="${note.date}"> Date </span></td>
         <td><span th:text="${note.note_text}"> Text </span></td>
+        <td><span th:text="${note.owner}"> Owner </span></td>
     </tr>
     </tbody>
 </table>

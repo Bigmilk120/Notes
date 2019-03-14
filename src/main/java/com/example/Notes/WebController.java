@@ -32,10 +32,11 @@ public class WebController {
         model.addAttribute("Login", new Login());
         model.addAttribute("username",login.getUsername());
         model.addAttribute("password",login.getPassword());
-        model.addAttribute("Notes", notesRepository.findAll());
+        //model.addAttribute("Notes", notesRepository.findAll());
         List<Login> logins = loginRepository.isCorrect(login.getUsername(),login.getPassword());
         if(logins.size()==1){
             user.setUsername(login.getUsername());
+            model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
             return "ShowAll";
         }
         return "/Index";
@@ -64,7 +65,7 @@ public class WebController {
     }
     @GetMapping("/ShowAll")
     public String showAll(Model model) {
-        model.addAttribute("Notes", notesRepository.showAllNotes(user.getUsername()));
+        model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
         return "/ShowAll";
     }
 }
