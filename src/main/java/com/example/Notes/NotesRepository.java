@@ -11,6 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface NotesRepository extends CrudRepository<Notes, Integer> {
-    @Query("select n from Notes n")
-    List<Notes> showAllNotes();
+    @Query("select n from Notes n where owner like ?1")
+    List<Notes> showAllNotes(String owner);
 }

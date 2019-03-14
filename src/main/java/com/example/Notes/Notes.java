@@ -16,6 +16,15 @@ public class Notes {
 
     private String note_text;
 
+    private String owner;
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
 
     public Integer getId() {
         return id;

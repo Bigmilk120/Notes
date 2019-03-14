@@ -13,6 +13,9 @@ import java.util.List;
 
 @Controller
 public class WebController {
+
+    User user = new User();
+
     @Autowired
     private NotesRepository notesRepository;
     @Autowired
@@ -32,6 +35,7 @@ public class WebController {
         model.addAttribute("Notes", notesRepository.findAll());
         List<Login> logins = loginRepository.isCorrect(login.getUsername(),login.getPassword());
         if(logins.size()==1){
+            user.setUsername(login.getUsername());
             return "ShowAll";
         }
         return "/Index";
@@ -52,15 +56,15 @@ public class WebController {
     public String ShowNotes(@Valid @ModelAttribute("Notes")Notes note, BindingResult result, ModelMap model){
         model.addAttribute("date",note.getDate());
         model.addAttribute("note_text",note.getNote_text());
-
+        note.setOwner(user.getUsername());
         notesRepository.save(note);
-        List<Notes> notes = notesRepository.showAllNotes();
+        List<Notes> notes = notesRepository.showAllNotes(user.getUsername());
 
         return "ShowNotes";
     }
     @GetMapping("/ShowAll")
     public String showAll(Model model) {
-        model.addAttribute("Notes", notesRepository.findAll());
+        model.addAttribute("Notes", notesRepository.showAllNotes(user.getUsername()));
         return "/ShowAll";
     }
 }
