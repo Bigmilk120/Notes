@@ -68,4 +68,9 @@ public class WebController {
         model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
         return "/ShowAll";
     }
+    @GetMapping("/Register")
+    public String register(Model model){
+        model.addAttribute("Register_User",new Login());
+        return "Register";
+    }
 }
