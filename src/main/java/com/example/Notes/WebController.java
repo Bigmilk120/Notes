@@ -68,9 +68,22 @@ public class WebController {
         model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
         return "/ShowAll";
     }
+
     @GetMapping("/Register")
-    public String register(Model model){
-        model.addAttribute("Register_User",new Login());
+    public String Register(Model model) {
+        model.addAttribute("Login", new Login());
         return "Register";
+    }
+
+    @PostMapping("/Register")
+    public String RegisterSubmit(@ModelAttribute Login login){
+        return "AfterRegister";
+    }
+
+    @RequestMapping("/AfterRegister")
+    public String AfterRegister(@Valid @ModelAttribute("Login")Login login, BindingResult result, ModelMap model){
+
+        loginRepository.save(login);
+        return "AfterRegister";
     }
 }
