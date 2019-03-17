@@ -82,7 +82,6 @@ public class WebController {
 
     @RequestMapping("/AfterRegister")
     public String AfterRegister(@Valid @ModelAttribute("Login")Login login, BindingResult result, ModelMap model){
-
         loginRepository.save(login);
         return "AfterRegister";
     }
