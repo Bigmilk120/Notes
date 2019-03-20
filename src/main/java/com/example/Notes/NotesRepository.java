@@ -12,8 +12,8 @@ import java.sql.Date;
 import java.util.List;
 
 public interface NotesRepository extends CrudRepository<Notes, Integer> {
-    @Query("select n from Notes n where owner like ?1")
+    @Query("select n from Notes n where n.owner like ?1")
     List<Notes> showAllNotes(String owner);
-    @Query("select n from Notes n where owner like ?1 and date not like ?2")
-    List<Notes> showAllNotesDate(String owner, Date date);
+    @Query("select n from Notes n where n.owner like ?1 and n.date like ?2")
+    List<Notes> showAllNotesDate(String owner, String date);
 }

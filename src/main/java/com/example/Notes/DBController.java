@@ -20,7 +20,7 @@ public class DBController {
     private NotesRepository notesRepository;
 
     @GetMapping(path="/add")
-    public @ResponseBody String addNewNote(@RequestParam Date date, @RequestParam String note_text){
+    public @ResponseBody String addNewNote(@RequestParam String date, @RequestParam String note_text){
         Notes note = new Notes();
         note.setDate(date);
         note.setNote_text(note_text);

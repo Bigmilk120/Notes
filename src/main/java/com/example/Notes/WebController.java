@@ -37,6 +37,14 @@ public class WebController {
         if(logins.size()==1){
             user.setUsername(login.getUsername());
             model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
+            String str="2019-03-07";
+            Date temp=Date.valueOf(str);
+            List<Notes> dayNotes = notesRepository.showAllNotesDate(user.getUsername(), str);
+            System.out.println(temp);
+            for(int i=0;i<dayNotes.size();i++){
+                System.out.println(dayNotes.get(i).getNote_text());
+            }
+            System.out.println("Koniec");
             return "ShowAll";
         }
         return "/Index";
@@ -60,17 +68,6 @@ public class WebController {
         note.setOwner(user.getUsername());
         notesRepository.save(note);
         List<Notes> notes = notesRepository.showAllNotes(user.getUsername());
-        String str="2019-03-07";
-        Date temp=Date.valueOf(str);
-        List<Notes> dayNotes = notesRepository.showAllNotesDate(user.getUsername(), temp);
-        System.out.println(temp);
-        for(int i=0;i<dayNotes.size();i++){
-            System.out.println(dayNotes.get(i));
-        }
-        System.out.println(notes);
-        System.out.println(dayNotes);
-
-
         return "ShowNotes";
     }
     @GetMapping("/ShowAll")

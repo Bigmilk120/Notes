@@ -1,9 +1,6 @@
 package com.example.Notes;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
@@ -12,7 +9,7 @@ public class Notes {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
-    private Date date;
+    private String date;
 
     private String note_text;
 
@@ -34,11 +31,11 @@ public class Notes {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
