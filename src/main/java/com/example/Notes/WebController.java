@@ -28,23 +28,27 @@ public class WebController {
     }
 
     @RequestMapping("/Result")
-    public String Result(@Valid @ModelAttribute("Login")Login login, BindingResult result, ModelMap model){
+    public String Result(@Valid @ModelAttribute("Login")Login login, ModelMap model){
+        model.addAttribute("Notes",new Notes());
         model.addAttribute("Login", new Login());
         model.addAttribute("username",login.getUsername());
         model.addAttribute("password",login.getPassword());
         //model.addAttribute("Notes", notesRepository.findAll());
+        model.addAttribute("Filter", new Notes());
         List<Login> logins = loginRepository.isCorrect(login.getUsername(),login.getPassword());
         if(logins.size()==1){
             user.setUsername(login.getUsername());
             model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
+
+
             String str="2019-03-07";
-            Date temp=Date.valueOf(str);
             List<Notes> dayNotes = notesRepository.showAllNotesDate(user.getUsername(), str);
-            System.out.println(temp);
             for(int i=0;i<dayNotes.size();i++){
                 System.out.println(dayNotes.get(i).getNote_text());
             }
             System.out.println("Koniec");
+
+
             return "ShowAll";
         }
         return "/Index";
@@ -71,8 +75,18 @@ public class WebController {
         return "ShowNotes";
     }
     @GetMapping("/ShowAll")
-    public String showAll(Model model) {
+    public String showAll(Model model, @RequestParam(value="date", required=false)Date date) {
+        model.addAttribute("Notes",new Notes());
         model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
+        if(date!=null){
+            System.out.println("jestem!");
+        }
+        return "/ShowAll";
+    }
+    @PostMapping("/ShowAll")
+    public String showAllPost(Model model, @RequestParam(value="date", required=false)Date date){
+        model.addAttribute("Notes",new Notes());
+        model.addAttribute("NotesUser",notesRepository.showAllNotesDate(user.getUsername(), date.toString()));
         return "/ShowAll";
     }
 

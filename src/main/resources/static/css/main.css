@@ -10,3 +10,6 @@ form{
 table td{
     border-right:1px solid black;
 }
+tbody{
+    text-align:center;
+}
