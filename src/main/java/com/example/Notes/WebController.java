@@ -36,6 +36,10 @@ public class WebController {
         //model.addAttribute("Notes", notesRepository.findAll());
         model.addAttribute("Filter", new Notes());
         List<Login> logins = loginRepository.isCorrect(login.getUsername(),login.getPassword());
+        if(!user.getUsername().isEmpty()) {
+            model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
+            return "ShowAll";
+        }
         if(logins.size()==1){
             user.setUsername(login.getUsername());
             model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
