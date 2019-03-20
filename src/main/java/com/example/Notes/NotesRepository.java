@@ -8,9 +8,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface NotesRepository extends CrudRepository<Notes, Integer> {
     @Query("select n from Notes n where owner like ?1")
     List<Notes> showAllNotes(String owner);
+    @Query("select n from Notes n where owner like ?1 and date not like ?2")
+    List<Notes> showAllNotesDate(String owner, Date date);
 }
