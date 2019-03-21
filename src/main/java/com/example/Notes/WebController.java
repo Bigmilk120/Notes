@@ -15,6 +15,7 @@ import java.util.List;
 public class WebController {
 
     User user = new User();
+    boolean logged = false;
 
     @Autowired
     private NotesRepository notesRepository;
@@ -36,23 +37,13 @@ public class WebController {
         //model.addAttribute("Notes", notesRepository.findAll());
         model.addAttribute("Filter", new Notes());
         List<Login> logins = loginRepository.isCorrect(login.getUsername(),login.getPassword());
-        if(!user.getUsername().isEmpty()) {
-            model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
-            return "ShowAll";
-        }
-        if(logins.size()==1){
-            user.setUsername(login.getUsername());
-            model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
 
-
-            String str="2019-03-07";
-            List<Notes> dayNotes = notesRepository.showAllNotesDate(user.getUsername(), str);
-            for(int i=0;i<dayNotes.size();i++){
-                System.out.println(dayNotes.get(i).getNote_text());
+        if(logins.size()==1|| logged == true){
+            if(logged == false) {
+                logged = true;
+                user.setUsername(login.getUsername());
             }
-            System.out.println("Koniec");
-
-
+            model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
             return "ShowAll";
         }
         return "/Index";
@@ -80,6 +71,8 @@ public class WebController {
     }
     @GetMapping("/ShowAll")
     public String showAll(Model model, @RequestParam(value="date", required=false)Date date) {
+        System.out.println("jestem!");
+
         model.addAttribute("Notes",new Notes());
         model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
         if(date!=null){
