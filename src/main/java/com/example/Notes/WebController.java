@@ -14,7 +14,10 @@ import java.util.List;
 @Controller
 public class WebController {
 
+    /* Instance to fill when user is logging into the system. Need it, to set owner of the notes. */
     User user = new User();
+
+    /* Variable describes if user is logged or not. */
     boolean logged = false;
 
     @Autowired
@@ -24,20 +27,24 @@ public class WebController {
 
     @GetMapping("/")
     public String Login(Model model) {
+        /* Model attribute which is needed with the form */
         model.addAttribute("Login", new Login());
         return "Login";
     }
 
     @RequestMapping("/Result")
     public String Result(@Valid @ModelAttribute("Login")Login login, ModelMap model){
+        /* Model attribute which is needed with the forms */
         model.addAttribute("Notes",new Notes());
         model.addAttribute("Login", new Login());
         model.addAttribute("username",login.getUsername());
         model.addAttribute("password",login.getPassword());
-        //model.addAttribute("Notes", notesRepository.findAll());
         model.addAttribute("Filter", new Notes());
+
+        /* List logins is a list of users with the same username and password which was given by user when logging. Can have 1 or 0 elements. */
         List<Login> logins = loginRepository.isCorrect(login.getUsername(),login.getPassword());
 
+        /* Checking if user is already logged into the system. If not, return /Index to let him try one more time. */
         if(logins.size()==1|| logged == true){
             if(logged == false) {
                 logged = true;
@@ -51,6 +58,7 @@ public class WebController {
 
     @GetMapping("/InsertNote")
     public String InsertNote(Model model) {
+        /* Model attribute which is needed with the form in /InsertNote */
         model.addAttribute("Notes", new Notes());
         return "InsertNote";
     }
@@ -62,6 +70,7 @@ public class WebController {
 
     @RequestMapping("/ShowNotes")
     public String ShowNotes(@Valid @ModelAttribute("Notes")Notes note, BindingResult result, ModelMap model){
+        /* Model attribute which is needed with the form in /ShowNotes */
         model.addAttribute("date",note.getDate());
         model.addAttribute("note_text",note.getNote_text());
         note.setOwner(user.getUsername());
@@ -71,8 +80,7 @@ public class WebController {
     }
     @GetMapping("/ShowAll")
     public String showAll(Model model, @RequestParam(value="date", required=false)Date date) {
-        System.out.println("jestem!");
-
+        /* Model attribute which is needed with the form in /ShowAll */
         model.addAttribute("Notes",new Notes());
         model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
         if(date!=null){
@@ -80,8 +88,10 @@ public class WebController {
         }
         return "/ShowAll";
     }
+    /* This function is used when user is filtering notes. */
     @PostMapping("/ShowAll")
     public String showAllPost(Model model, @RequestParam(value="date", required=false)Date date){
+        /* Model attribute which is needed with the form */
         model.addAttribute("Notes",new Notes());
         model.addAttribute("NotesUser",notesRepository.showAllNotesDate(user.getUsername(), date.toString()));
         return "/ShowAll";
@@ -89,6 +99,7 @@ public class WebController {
 
     @GetMapping("/Register")
     public String Register(Model model) {
+        /* Model attribute which is needed with the form */
         model.addAttribute("Login", new Login());
         return "Register";
     }
@@ -100,6 +111,7 @@ public class WebController {
 
     @RequestMapping("/AfterRegister")
     public String AfterRegister(@Valid @ModelAttribute("Login")Login login, BindingResult result, ModelMap model){
+         /* Saving user into the database */
         loginRepository.save(login);
         return "AfterRegister";
     }

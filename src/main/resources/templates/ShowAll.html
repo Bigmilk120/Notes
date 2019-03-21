@@ -24,14 +24,14 @@
         <td colspan="2"> No Notes Available </td>
     </tr>
     <tr th:each="note : ${NotesUser}" th:object="${Notes}">
-        <td><span th:text="${note.id}"> ID </span></td>
-        <td><span th:text="${note.date}"> Date </span></td>
-        <td><span th:text="${note.note_text}"> Text </span></td>
-        <td><span th:text="${note.owner}"> Owner </span></td>
+        <th><span th:text="${note.id}"> ID </span></th>
+        <th><span th:text="${note.date}"> Date </span></th>
+        <th><span th:text="${note.note_text}"> Text </span></th>
+        <th><span th:text="${note.owner}"> Owner </span></th>
     </tr>
     </tbody>
 </table>
-<a href="/InsertNote">Click here to add a note</a>
+<a href="/InsertNote">Click here to add a note</a><br>
 <a href="/Result">Click here to see all notes</a></body>
 </body>
 </html>
