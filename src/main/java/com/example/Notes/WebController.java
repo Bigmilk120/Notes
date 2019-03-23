@@ -79,7 +79,7 @@ public class WebController {
         return "ShowNotes";
     }
     @GetMapping("/ShowAll")
-    public String showAll(Model model, @RequestParam(value="date", required=false)Date date) {
+    public String showAll(Model model, @RequestParam(value="date", required=false)Date date, @RequestParam(value="dateFrom",required=false)Date dateFrom,@RequestParam(value="dateTo",required=false)Date dateTo ) {
         /* Model attribute which is needed with the form in /ShowAll */
         model.addAttribute("Notes",new Notes());
         model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
@@ -90,10 +90,13 @@ public class WebController {
     }
     /* This function is used when user is filtering notes. */
     @PostMapping("/ShowAll")
-    public String showAllPost(Model model, @RequestParam(value="date", required=false)Date date){
+    public String showAllPost(Model model, @RequestParam(value="date", required=false)Date date,@RequestParam(value="dateFrom",required=false)String dateFrom,@RequestParam(value="dateTo",required=false)String dateTo){
         /* Model attribute which is needed with the form */
         model.addAttribute("Notes",new Notes());
         model.addAttribute("NotesUser",notesRepository.showAllNotesDate(user.getUsername(), date.toString()));
+        if(dateFrom!=null){
+            model.addAttribute("NotesUser",notesRepository.showAllNotesDatesRange(user.getUsername(),dateFrom,dateTo));
+        }
         return "/ShowAll";
     }
 

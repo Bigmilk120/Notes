@@ -16,4 +16,6 @@ public interface NotesRepository extends CrudRepository<Notes, Integer> {
     List<Notes> showAllNotes(String owner);
     @Query("select n from Notes n where n.owner like ?1 and n.date like ?2")
     List<Notes> showAllNotesDate(String owner, String date);
+    @Query("select n from Notes n where n.owner like ?1 and n.date between ?2 and ?3")
+    List<Notes> showAllNotesDatesRange(String owner, String dateFrom, String dateTo);
 }
