@@ -37,6 +37,7 @@ public class WebController {
         /* Model attribute which is needed with the forms */
         model.addAttribute("Notes",new Notes());
         model.addAttribute("Login", new Login());
+        model.addAttribute("NotesFilter",new NotesFilter());
         model.addAttribute("username",login.getUsername());
         model.addAttribute("password",login.getPassword());
         model.addAttribute("Filter", new Notes());
@@ -82,6 +83,7 @@ public class WebController {
     public String showAll(Model model, @RequestParam(value="date", required=false)Date date, @RequestParam(value="dateFrom",required=false)Date dateFrom,@RequestParam(value="dateTo",required=false)Date dateTo ) {
         /* Model attribute which is needed with the form in /ShowAll */
         model.addAttribute("Notes",new Notes());
+        model.addAttribute("NotesFilter",new NotesFilter());
         model.addAttribute("NotesUser", notesRepository.showAllNotes(user.getUsername()));
         if(date!=null){
             System.out.println("jestem!");
@@ -94,6 +96,7 @@ public class WebController {
         /* Model attribute which is needed with the form */
         model.addAttribute("Notes",new Notes());
         model.addAttribute("NotesUser",notesRepository.showAllNotesDate(user.getUsername(), date.toString()));
+        model.addAttribute("NotesFilter",new NotesFilter());
         if(dateFrom!=null){
             model.addAttribute("NotesUser",notesRepository.showAllNotesDatesRange(user.getUsername(),dateFrom,dateTo));
         }
@@ -125,5 +128,12 @@ public class WebController {
         logged=false;
         user=new User();
         return "/Index";
+    }
+    @RequestMapping("/ShowAllFiltered")
+    public String showAllFiltered(ModelMap model,@RequestParam(value="dateFrom",required=false)String dateFrom,@RequestParam(value="dateTo",required=false)String dateTo){
+        model.addAttribute("NotesFilter",new NotesFilter());
+        model.addAttribute("NotesUser",notesRepository.showAllNotesDatesRange(user.getUsername(), dateFrom, dateTo));
+        model.addAttribute("Notes",new Notes());
+        return "/ShowAllFiltered";
     }
 }
