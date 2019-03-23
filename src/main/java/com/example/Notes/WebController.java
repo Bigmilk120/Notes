@@ -115,4 +115,12 @@ public class WebController {
         loginRepository.save(login);
         return "AfterRegister";
     }
+    @RequestMapping("/Logout")
+    public String logout(ModelMap model){
+        model.addAttribute("Notes",new Notes());
+        model.addAttribute("Login", new Login());
+        logged=false;
+        user=new User();
+        return "/Index";
+    }
 }
