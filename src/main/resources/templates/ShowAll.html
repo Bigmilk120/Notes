@@ -7,12 +7,12 @@
 </head>
 <body>
 <form action="#" th:action="@{/ShowAll}" th:object="${Notes}" method="post">
-    <p>Date: <input type="date" th:field="*{date}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    <p>Date: <input type="date" th:field="*{date}" required /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" required /></p>
 </form>
 <form action="#" th:action="@{/ShowAllFiltered}" th:object="${NotesFilter}" method="post">
-    <p>Date: <input type="date" th:field="*{dateFrom}" /></p>
-    <p>Date: <input type="date" th:field="*{dateTo}" /></p>
+    <p>Date: <input type="date" th:field="*{dateFrom}" required /></p>
+    <p>Date: <input type="date" th:field="*{dateTo}" required /></p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
 <table>

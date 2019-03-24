@@ -8,8 +8,8 @@
 </head>
 <body>
     <form action="#" th:action="@{/ShowNotes}" th:object="${Notes}" method="post">
-        <p>Date: <input type="date" th:field="*{date}" /></p>
-        <p>Text: <input type="text" th:field="*{note_text}" /></p>
+        <p>Date: <input type="date" th:field="*{date}" required /></p>
+        <p>Text: <input type="text" th:field="*{note_text}" required /></p>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
 </body>
