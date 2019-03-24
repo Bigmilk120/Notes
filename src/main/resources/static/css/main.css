@@ -1,5 +1,10 @@
+html{
+
+}
 body{
-    background-color:white;
+    background-image:url("../images/background.jpg");
+    background-repeat: repeat;
+    /*background-color:white; */
 }
 form{
     padding-left:10%;
